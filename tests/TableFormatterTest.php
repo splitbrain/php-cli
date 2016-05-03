@@ -77,26 +77,18 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * check that color codes are not used when calculating string lengths
-     */
-    public function test_strlen()
-    {
-        $tf = new TableFormatter();
-        $this->assertEquals(strlen("this is red!"), $tf->strlen("this is \33[0;31mred\33[0m!"));
-    }
-
-    /**
      * Check wrapping
      */
-    public function test_wrap() {
-        $text = "this is a long string something\n".
-                "123456789012345678901234567890";
+    public function test_wrap()
+    {
+        $text = "this is a long string something\n" .
+            "123456789012345678901234567890";
 
-        $expt = "this is a long\n".
-                "string\n".
-                "something\n".
-                "123456789012345\n".
-                "678901234567890";
+        $expt = "this is a long\n" .
+            "string\n" .
+            "something\n" .
+            "123456789012345\n" .
+            "678901234567890";
 
         $tf = new TableFormatter();
         $this->assertEquals($expt, $tf->wordwrap($text, 15, "\n", true));

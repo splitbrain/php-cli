@@ -44,8 +44,8 @@ class Simple extends CLI
             $this->info("file was given as " . $options->getOpt('file'));
         }
 
-        $this->info("Number of arguments: ".count($options->getArgs()));
-        
+        $this->info("Number of arguments: " . count($options->getArgs()));
+
         $this->success("main finished");
     }
 }

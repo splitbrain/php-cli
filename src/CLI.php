@@ -25,9 +25,9 @@ abstract class CLI
      *
      * @param bool $autocatch should exceptions be catched and handled automatically?
      */
-    public function __construct($autocatch=true)
+    public function __construct($autocatch = true)
     {
-        if($autocatch) {
+        if ($autocatch) {
             set_exception_handler(array($this, 'fatal'));
         }
 

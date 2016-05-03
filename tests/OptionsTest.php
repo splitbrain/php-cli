@@ -1,8 +1,14 @@
 <?php
 
-use splitbrain\phpcli\Options;
+namespace splitbrain\phpcli\tests;
 
-class OptionsTest extends PHPUnit_Framework_TestCase
+class Options extends \splitbrain\phpcli\Options
+{
+
+    public $args;
+}
+
+class OptionsTest extends \PHPUnit_Framework_TestCase
 {
 
     function test_simpleshort()

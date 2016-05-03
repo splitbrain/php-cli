@@ -27,7 +27,8 @@ class Complex extends CLI
         $options->registerOption('someflag', 'This is a flag only valid for the foo command', 's', false, 'foo');
         $options->registerArgument('file', 'This argument is only required for the foo command', true, 'foo');
 
-        $options->registerOption('load', 'Another flag only for the bar command, requiring an argument', 'l', 'input', 'bar');
+        $options->registerOption('load', 'Another flag only for the bar command, requiring an argument', 'l', 'input',
+            'bar');
 
     }
 
@@ -56,7 +57,7 @@ class Complex extends CLI
         }
 
         $this->info('$options->getArgs():');
-            var_dump($options->getArgs());
+        var_dump($options->getArgs());
 
     }
 }
