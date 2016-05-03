@@ -21,6 +21,7 @@ class Simple extends CLI
         $options->setHelp('This is a simple example, not using any subcommands');
         $options->registerOption('longflag', 'A flag that can also be set with a short option', 'l');
         $options->registerOption('file', 'This option expects an argument.', 'f', 'filename');
+        $options->registerArgument('argument', 'Arguments can be required or optional. This one is optional', false);
     }
 
     /**

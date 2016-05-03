@@ -31,8 +31,8 @@ abstract class CLI
             set_exception_handler(array($this, 'fatal'));
         }
 
-        $this->options = new Options();
         $this->colors = new Colors();
+        $this->options = new Options($this->colors);
     }
 
     /**

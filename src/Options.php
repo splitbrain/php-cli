@@ -38,7 +38,7 @@ class Options
      */
     public function __construct(Colors $colors = null)
     {
-        if(!is_null($colors)) {
+        if (!is_null($colors)) {
             $this->colors = $colors;
         } else {
             $this->colors = new Colors();
@@ -311,7 +311,8 @@ class Options
      *
      * @return array
      */
-    public function getArgs() {
+    public function getArgs()
+    {
         return $this->args;
     }
 
@@ -322,6 +323,7 @@ class Options
      */
     public function help()
     {
+        $tf = new TableFormatter($this->colors);
         $text = '';
 
         $hascommands = (count($this->setup) > 1);
@@ -329,35 +331,52 @@ class Options
             $hasopts = (bool)$this->setup[$command]['opts'];
             $hasargs = (bool)$this->setup[$command]['args'];
 
+            // usage or command syntax line
             if (!$command) {
-                $text .= 'USAGE: ' . $this->bin;
+                $text .= $this->colors->wrap('USAGE:', 'brown');
+                $text .= "\n";
+                $text .= '   ' . $this->bin;
+                $mv = 2;
             } else {
-                $text .= "\n$command";
+                $text .= "\n";
+                $text .= $this->colors->wrap('   ' . $command, 'purple');
+                $mv = 4;
             }
 
             if ($hasopts) {
-                $text .= ' <OPTIONS>';
+                $text .= ' ' . $this->colors->wrap('<OPTIONS>', 'green');
+            }
+
+            if (!$command && $hascommands) {
+                $text .= ' ' . $this->colors->wrap('<COMMAND> ...', 'purple');
             }
 
             foreach ($this->setup[$command]['args'] as $arg) {
-                if ($arg['required']) {
-                    $text .= ' <' . $arg['name'] . '>';
-                } else {
-                    $text .= ' [<' . $arg['name'] . '>]';
+                $out = $this->colors->wrap('<' . $arg['name'] . '>', 'cyan');
+
+                if (!$arg['required']) {
+                    $out = '[' . $out . ']';
                 }
+                $text .= ' ' . $out;
             }
             $text .= "\n";
 
+            // usage or command intro
             if ($this->setup[$command]['help']) {
                 $text .= "\n";
-                $text .= $this->tableFormat(
-                    array(2, 72),
+                $text .= $tf->format(
+                    array($mv, '*'),
                     array('', $this->setup[$command]['help'] . "\n")
                 );
             }
 
+            // option description
             if ($hasopts) {
-                $text .= "\n  OPTIONS\n\n";
+                if (!$command) {
+                    $text .= "\n";
+                    $text .= $this->colors->wrap('OPTIONS:', 'brown');
+                }
+                $text .= "\n";
                 foreach ($this->setup[$command]['opts'] as $long => $opt) {
 
                     $name = '';
@@ -373,28 +392,43 @@ class Options
                         $name .= ' <' . $opt['needsarg'] . '>';
                     }
 
-                    $text .= $this->tableFormat(
-                        array(2, 20, 52),
-                        array('', $name, $opt['help'])
+                    $text .= $tf->format(
+                        array($mv, '30%', '*'),
+                        array('', $name, $opt['help']),
+                        array('', 'green', '')
                     );
                     $text .= "\n";
                 }
             }
 
+            // argument description
             if ($hasargs) {
+                if (!$command) {
+                    $text .= "\n";
+                    $text .= $this->colors->wrap('ARGUMENTS:', 'brown');
+                }
                 $text .= "\n";
                 foreach ($this->setup[$command]['args'] as $arg) {
                     $name = '<' . $arg['name'] . '>';
 
-                    $text .= $this->tableFormat(
-                        array(2, 20, 52),
-                        array('', $name, $arg['help'])
+                    $text .= $tf->format(
+                        array($mv, '30%', '*'),
+                        array('', $name, $arg['help']),
+                        array('', 'cyan', '')
                     );
                 }
             }
 
-            if ($command == '' && $hascommands) {
-                $text .= "\nThis tool accepts a command as first parameter as outlined below:\n";
+            // head line and intro for following command documentation
+            if (!$command && $hascommands) {
+                $text .= "\n";
+                $text .= $this->colors->wrap('COMMANDS:', 'brown');
+                $text .= "\n";
+                $text .= $tf->format(
+                    array($mv, '*'),
+                    array('', 'This tool accepts a command as first parameter as outlined below:')
+                );
+                $text .= "\n";
             }
         }
 
@@ -424,42 +458,6 @@ class Options
             return $_SERVER['argv'];
         }
         return $argv;
-    }
-
-    /**
-     * Displays text in multiple word wrapped columns
-     *
-     * @param int[] $widths list of column widths (in characters)
-     * @param string[] $texts list of texts for each column
-     * @return string
-     */
-    private function tableFormat($widths, $texts)
-    {
-        $wrapped = array();
-        $maxlen = 0;
-
-        foreach ($widths as $col => $width) {
-            $wrapped[$col] = explode("\n", wordwrap($texts[$col], $width - 1, "\n", true)); // -1 char border
-            $len = count($wrapped[$col]);
-            if ($len > $maxlen) {
-                $maxlen = $len;
-            }
-
-        }
-
-        $out = '';
-        for ($i = 0; $i < $maxlen; $i++) {
-            foreach ($widths as $col => $width) {
-                if (isset($wrapped[$col][$i])) {
-                    $val = $wrapped[$col][$i];
-                } else {
-                    $val = '';
-                }
-                $out .= sprintf('%-' . $width . 's', $val);
-            }
-            $out .= "\n";
-        }
-        return $out;
     }
 }
 
