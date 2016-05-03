@@ -4,11 +4,13 @@ namespace splitbrain\phpcli;
 
 class TableFormatter
 {
-
+    /** @var string border between columns */
     protected $border = ' ';
 
+    /** @var int the terminal width */
     protected $max = 74;
 
+    /** @var Colors for coloring output */
     protected $colors;
 
     /**
