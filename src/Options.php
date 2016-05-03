@@ -333,26 +333,26 @@ class Options
 
             // usage or command syntax line
             if (!$command) {
-                $text .= $this->colors->wrap('USAGE:', 'brown');
+                $text .= $this->colors->wrap('USAGE:', Colors::C_BROWN);
                 $text .= "\n";
                 $text .= '   ' . $this->bin;
                 $mv = 2;
             } else {
                 $text .= "\n";
-                $text .= $this->colors->wrap('   ' . $command, 'purple');
+                $text .= $this->colors->wrap('   ' . $command, Colors::C_PURPLE);
                 $mv = 4;
             }
 
             if ($hasopts) {
-                $text .= ' ' . $this->colors->wrap('<OPTIONS>', 'green');
+                $text .= ' ' . $this->colors->wrap('<OPTIONS>', Colors::C_GREEN);
             }
 
             if (!$command && $hascommands) {
-                $text .= ' ' . $this->colors->wrap('<COMMAND> ...', 'purple');
+                $text .= ' ' . $this->colors->wrap('<COMMAND> ...', Colors::C_PURPLE);
             }
 
             foreach ($this->setup[$command]['args'] as $arg) {
-                $out = $this->colors->wrap('<' . $arg['name'] . '>', 'cyan');
+                $out = $this->colors->wrap('<' . $arg['name'] . '>', Colors::C_CYAN);
 
                 if (!$arg['required']) {
                     $out = '[' . $out . ']';
@@ -374,7 +374,7 @@ class Options
             if ($hasopts) {
                 if (!$command) {
                     $text .= "\n";
-                    $text .= $this->colors->wrap('OPTIONS:', 'brown');
+                    $text .= $this->colors->wrap('OPTIONS:', Colors::C_BROWN);
                 }
                 $text .= "\n";
                 foreach ($this->setup[$command]['opts'] as $long => $opt) {
@@ -405,7 +405,7 @@ class Options
             if ($hasargs) {
                 if (!$command) {
                     $text .= "\n";
-                    $text .= $this->colors->wrap('ARGUMENTS:', 'brown');
+                    $text .= $this->colors->wrap('ARGUMENTS:', Colors::C_BROWN);
                 }
                 $text .= "\n";
                 foreach ($this->setup[$command]['args'] as $arg) {
@@ -422,7 +422,7 @@ class Options
             // head line and intro for following command documentation
             if (!$command && $hascommands) {
                 $text .= "\n";
-                $text .= $this->colors->wrap('COMMANDS:', 'brown');
+                $text .= $this->colors->wrap('COMMANDS:', Colors::C_BROWN);
                 $text .= "\n";
                 $text .= $tf->format(
                     array($mv, '*'),

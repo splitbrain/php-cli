@@ -126,7 +126,7 @@ abstract class CLI
      */
     public function error($string)
     {
-        $this->colors->ptln("E: $string", 'red', STDERR);
+        $this->colors->ptln("E: $string", Colors::C_RED, STDERR);
     }
 
     /**
@@ -136,7 +136,7 @@ abstract class CLI
      */
     public function success($string)
     {
-        $this->colors->ptln("S: $string", 'green', STDERR);
+        $this->colors->ptln("S: $string", Colors::C_GREEN, STDERR);
     }
 
     /**
@@ -146,7 +146,7 @@ abstract class CLI
      */
     public function info($string)
     {
-        $this->colors->ptln("I: $string", 'cyan', STDERR);
+        $this->colors->ptln("I: $string", Colors::C_CYAN, STDERR);
     }
 
 }

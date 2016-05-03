@@ -11,25 +11,44 @@ namespace splitbrain\phpcli;
  */
 class Colors
 {
+    // these constants make IDE autocompletion easier, but color names can also be passed as strings
+    const C_RESET = 'reset';
+    const C_BLACK = 'black';
+    const C_DARKGRAY = 'darkgray';
+    const C_BLUE = 'blue';
+    const C_LIGHTBLUE = 'lightblue';
+    const C_GREEN = 'green';
+    const C_LIGHTGREEN = 'lightgreen';
+    const C_CYAN = 'cyan';
+    const C_LIGHTCYAN = 'lightcyan';
+    const C_RED = 'red';
+    const C_LIGHTRED = 'lightred';
+    const C_PURPLE = 'purple';
+    const C_LIGHTPURPLE = 'lightpurple';
+    const C_BROWN = 'brown';
+    const C_YELLOW = 'yellow';
+    const C_LIGHTGRAY = 'lightgray';
+    const C_WHITE = 'white';
+
     /** @var array known color names */
     protected $colors = array(
-        'reset' => "\33[0m",
-        'black' => "\33[0;30m",
-        'darkgray' => "\33[1;30m",
-        'blue' => "\33[0;34m",
-        'lightblue' => "\33[1;34m",
-        'green' => "\33[0;32m",
-        'lightgreen' => "\33[1;32m",
-        'cyan' => "\33[0;36m",
-        'lightcyan' => "\33[1;36m",
-        'red' => "\33[0;31m",
-        'lightred' => "\33[1;31m",
-        'purple' => "\33[0;35m",
-        'lightpurple' => "\33[1;35m",
-        'brown' => "\33[0;33m",
-        'yellow' => "\33[1;33m",
-        'lightgray' => "\33[0;37m",
-        'white' => "\33[1;37m",
+        self::C_RESET => "\33[0m",
+        self::C_BLACK => "\33[0;30m",
+        self::C_DARKGRAY => "\33[1;30m",
+        self::C_BLUE => "\33[0;34m",
+        self::C_LIGHTBLUE => "\33[1;34m",
+        self::C_GREEN => "\33[0;32m",
+        self::C_LIGHTGREEN => "\33[1;32m",
+        self::C_CYAN => "\33[0;36m",
+        self::C_LIGHTCYAN => "\33[1;36m",
+        self::C_RED => "\33[0;31m",
+        self::C_LIGHTRED => "\33[1;31m",
+        self::C_PURPLE => "\33[0;35m",
+        self::C_LIGHTPURPLE => "\33[1;35m",
+        self::C_BROWN => "\33[0;33m",
+        self::C_YELLOW => "\33[1;33m",
+        self::C_LIGHTGRAY => "\33[0;37m",
+        self::C_WHITE => "\33[1;37m",
     );
 
     /** @var bool should colors be used? */
