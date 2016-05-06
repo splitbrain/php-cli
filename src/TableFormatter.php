@@ -2,6 +2,14 @@
 
 namespace splitbrain\phpcli;
 
+/**
+ * Class TableFormatter
+ *
+ * Output text in multiple columns
+ *
+ * @author Andreas Gohr <andi@splitbrain.org>
+ * @license MIT
+ */
 class TableFormatter
 {
     /** @var string border between columns */
@@ -42,6 +50,8 @@ class TableFormatter
     }
 
     /**
+     * The currently set border (defaults to ' ')
+     *
      * @return string
      */
     public function getBorder()
@@ -50,6 +60,9 @@ class TableFormatter
     }
 
     /**
+     * Set the border. The border is set between each column. Its width is
+     * added to the column widths.
+     *
      * @param string $border
      */
     public function setBorder($border)
@@ -58,6 +71,10 @@ class TableFormatter
     }
 
     /**
+     * Width of the terminal in characters
+     *
+     * initially autodetected
+     *
      * @return int
      */
     public function getMaxWidth()
@@ -66,6 +83,8 @@ class TableFormatter
     }
 
     /**
+     * Set the width of the terminal to assume (in characters)
+     *
      * @param int $max
      */
     public function setMaxWidth($max)

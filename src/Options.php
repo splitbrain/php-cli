@@ -9,6 +9,7 @@ namespace splitbrain\phpcli;
  * commands and even generates a help text from this setup.
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @license MIT
  */
 class Options
 {

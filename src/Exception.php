@@ -3,12 +3,13 @@
 namespace splitbrain\phpcli;
 
 /**
- * Class DokuCLI_Exception
+ * Class Exception
  *
  * The code is used as exit code for the CLI tool. This should probably be extended. Many cases just fall back to the
  * E_ANY code.
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @license MIT
  */
 class Exception extends \Exception
 {

@@ -8,6 +8,7 @@ namespace splitbrain\phpcli;
  * Your commandline script should inherit from this class and implement the abstract methods.
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @license MIT
  */
 abstract class CLI
 {

@@ -8,6 +8,7 @@ namespace splitbrain\phpcli;
  * Handles color output on (Linux) terminals
  *
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @license MIT
  */
 class Colors
 {
