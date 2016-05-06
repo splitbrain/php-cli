@@ -1,6 +1,15 @@
 {
   "name": "splitbrain/php-cli",
-  "description": "easy command line scripts for PHP",
+  "description": "Easy command line scripts for PHP with opt parsing and color output. No dependencies",
+  "keywords": [
+    "cli",
+    "console",
+    "terminal",
+    "command line",
+    "getopt",
+    "optparse",
+    "argparse"
+  ],
   "license": "MIT",
   "authors": [
     {
