@@ -11,9 +11,13 @@ It takes care of
 
 It is lightweight and has **no 3rd party dependencies**.
 
+[![Build Status](https://travis-ci.org/splitbrain/php-cli.svg)](https://travis-ci.org/splitbrain/php-cli)
+
 ## Installation
 
-composer
+Use composer:
+
+```php composer.phar require splitbrain/php-cli```
 
 ## Usage and Examples
 
@@ -31,7 +35,8 @@ The basic usage is simple:
     - ``$options->getCmd()`` returns the sub command the user used
 - instantiate your class and call ```run()``` on it
 
-Examples can be found in the examples directory. Please refer to the API docs for further info. 
+Examples can be found in the examples directory. Please refer to the [API docs](https://splitbrain.github.io/php-cli/)
+for further info.
 
 ## Exceptions
 
@@ -45,7 +50,7 @@ exceptions's code will be used as the exit code then.
 ## Colored output
 
 Colored output is handled through the ``Colors`` class. It tries to detect if a color terminal is available and only
-then uses terminal colors. You can always suppress colored output by passing ``--no-colors`` to your scripts. 
+then uses terminal colors. You can always suppress colored output by passing ``--no-colors`` to your scripts.
 
 Simple colored log messages can be printed by you using the convinence methods ``success()`` (green), ``info()`` (cyan),
 ``error()`` (red) or ``fatal()`` (red). The latter will also exit the programm with a non-zero exit code.
@@ -62,19 +67,19 @@ and wrapping will fail, breaking your texts).
 
 The ``TableFormatter`` class allows you to align texts in multiple columns. It tries to figure out the available
 terminal width on its own. It can be overwritten by setting a ``COLUMNS`` environment variable.
- 
+
 The formatter is used through the ``format()`` method which expects at least two arrays: The first defines the column
 widths, the second contains the texts to fill into the columns. Between each column a border is printed (a single space
 by default).
- 
+
 See the ``example/table.php`` for sample usage.
-  
+
 Columns width can be given in three forms:
 
 - fixed width in characters by providing an integer (eg. ``15``)
 - precentages by provifing an integer and a percent sign (eg. ``25%``)
 - a single fluid "rest" column marked with an asterisk (eg. ``*``)
- 
+
 When mixing fixed and percentage widths, percentages refer to the remaining space after all fixed columns have been
 assigned.
 
