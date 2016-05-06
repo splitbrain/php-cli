@@ -1,17 +1,17 @@
 language: php
 sudo: false
 php:
-- 5.4
-- 5.5
-- 5.6
-- 7.0
-- hhvm
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
 before_script:
-- composer self-update
-- composer install --prefer-source --no-interaction --dev
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
 script: phpunit
-#after_success:
-#- sh generate-api.sh
-#env:
-#  global:
-#    secure: ctCQVPQgQziwIZf5QGHcnhHlXsyauG0W3AWF/6R8cTP+in2S/RygunPp7CkXiqA1YMluGr2Lo9h4DTVg7oqeXl79FXFXedijQmQEu3g3f4iDWtxbQhGf4bJQk57jXFldge4rQedlOJDzwGzJ1abrimJQlu090BZNeonzWL5cRK4=
+after_success:
+  - sh generate-api.sh
+env:
+  global:
+    secure: "kBZtcDAFNJsVf6ks1jR/+30MP8IxGTjlYNzRp37zVfNocAq9OOMnFOw/7pHJOrrKT2FJtODamrwJEeRKMMAxEOxn+I5nTWmBt5MsiI2rr5YtkT9twwGhN1fxHsKKIBbZiVNYLLmulO2yU+cQSJT3tFoqKTvVo5CHDiqE8DT7grK15kMkXGUD7PG35irG8b0O3djq4RVEvDbyLUwm/JPYe/2QkqznejtIpDkqaxUVkMOLDhC2uaXCgYZMUz4DT4cVsNsixWiXki4WXNqb9rVI2TTcTYyjjecVpFsRHeJ4llhqyBpJLAbs+qWtGJ5o9Rsl77FsVYd3tA2w2g5ymVyHsI7Dr2YiLF/b862oioqNtG7Fikwa4TRpLSR+I6SjJjyP7KUg1nnxy70skzYbFi7qahvBX379UiJfMYWdJpCi7pitleDio+dx1eRbGo5wPo0MAs6CbxCmWxFSPYoKQ8cb0VuzkGXQjwjZkzMu6N8rr41l2LFw+nek9pw4olVkBy3q70//Iott/cSjQmGE7x25UYy2BTi4Yj+/okH0M+dS9QmwQj/q4uG7exmfuPyYfhAHyjwdpqfy33JOMx0JdEa815rVi6CtNGweUcInLwkRa8TWJmfhAZuZI0ekjVpzu4q0h1whBCR6c3gWcehXUfpRUioaEuDA86eDcpR9BBakQL8="
