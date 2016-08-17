@@ -220,7 +220,7 @@ class Options
                 $val = array_shift($arg);
 
                 if (!isset($this->setup[$this->command]['opts'][$opt])) {
-                    throw new Exception("No such option $arg", Exception::E_UNKNOWN_OPT);
+                    throw new Exception("No such option '$opt'", Exception::E_UNKNOWN_OPT);
                 }
 
                 // argument required?
