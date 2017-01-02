@@ -283,12 +283,16 @@ class Options
      *
      * Can only be used after parseOptions() has been run
      *
-     * @param string $option
+     * @param mixed $option
      * @param bool|string $default what to return if the option was not set
      * @return bool|string
      */
-    public function getOpt($option, $default = false)
+    public function getOpt($option = null, $default = false)
     {
+        if ($option === null) {
+            return $this->options;
+        }
+
         if (isset($this->options[$option])) {
             return $this->options[$option];
         }
