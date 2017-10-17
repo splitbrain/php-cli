@@ -20,16 +20,16 @@ abstract class CLI
     public $colors;
 
     /** @var array PSR-3 compatible loglevels and their prefix, color, output channel */
-    public $loglevel = array(
-        'emergency' => array('!: ', Colors::C_RED, STDERR),
-        'alert' => array('!: ', Colors::C_RED, STDERR),
-        'critical' => array('!: ', Colors::C_RED, STDERR),
-        'error' => array('E: ', Colors::C_RED, STDERR),
-        'warning' => array('W: ', Colors::C_BROWN, STDERR),
-        'success' => array('S: ', Colors::C_GREEN, STDOUT),
-        'notice' => array('I: ', Colors::C_GREEN, STDOUT),
-        'info' => array('I: ', Colors::C_CYAN, STDOUT),
+    protected $loglevel = array(
         'debug' => array('', Colors::C_LIGHTGRAY, STDOUT),
+        'info' => array('I: ', Colors::C_CYAN, STDOUT),
+        'notice' => array('I: ', Colors::C_GREEN, STDOUT),
+        'success' => array('S: ', Colors::C_GREEN, STDOUT),
+        'warning' => array('W: ', Colors::C_BROWN, STDERR),
+        'error' => array('E: ', Colors::C_RED, STDERR),
+        'critical' => array('!: ', Colors::C_RED, STDERR),
+        'alert' => array('!: ', Colors::C_RED, STDERR),
+        'emergency' => array('!: ', Colors::C_RED, STDERR),
     );
 
     /**
@@ -82,13 +82,20 @@ abstract class CLI
         // setup
         $this->setup($this->options);
         $this->options->registerOption(
+            'help',
+            'Display this help screen and exit immeadiately.',
+            'h'
+        );
+        $this->options->registerOption(
             'no-colors',
             'Do not use any colors in output. Useful when piping output to other tools or files.'
         );
         $this->options->registerOption(
-            'help',
-            'Display this help screen and exit immeadiately.',
-            'h'
+            'loglevel',
+            'Minimum level of messages to display. Default is success. ' .
+            'Valid levels are: debug, info, notice, success, warning, error, critical, alert, emergency.',
+            null,
+            'level'
         );
 
         // parse
@@ -101,6 +108,12 @@ abstract class CLI
         if ($this->options->getOpt('help')) {
             echo $this->options->help();
             exit(0);
+        }
+        $level = $this->options->getOpt('loglevel', 'success');
+        if (!isset($this->loglevel[$level])) $this->fatal('Unknown log level');
+        foreach (array_keys($this->loglevel) as $l) {
+            if ($l == $level) break;
+            unset($this->loglevel[$l]);
         }
 
         // check arguments
@@ -257,7 +270,9 @@ abstract class CLI
      */
     public function log($level, $message, array $context = array())
     {
-        if (!isset($this->loglevel[$level])) $level = 'error';
+        // is this log level wanted?
+        if (!isset($this->loglevel[$level])) return;
+
         /** @var string $prefix */
         /** @var string $color */
         /** @var resource $channel */
