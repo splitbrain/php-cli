@@ -138,6 +138,7 @@ abstract class CLI
         $code = 0;
         if (is_object($error) && is_a($error, 'Exception')) {
             /** @var Exception $error */
+            $this->debug(get_class($error) . ' caught in ' . $error->getFile() . ':' . $error->getLine());
             $this->debug($error->getTraceAsString());
             $code = $error->getCode();
             $error = $error->getMessage();
