@@ -250,7 +250,7 @@ abstract class CLI
      */
     public function info($message, array $context = array())
     {
-        $this->log('debug', $message, $context);
+        $this->log('info', $message, $context);
     }
 
     /**
