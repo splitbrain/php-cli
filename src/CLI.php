@@ -280,6 +280,7 @@ abstract class CLI
         /** @var string $color */
         /** @var resource $channel */
         list($prefix, $color, $channel) = $this->loglevel[$level];
+        if(!$this->colors->isEnabled()) $prefix = '';
 
         $message = $this->interpolate($message, $context);
         $this->colors->ptln($prefix . $message, $color, $channel);

@@ -89,6 +89,14 @@ class Colors
     }
 
     /**
+     * @return bool is color support enabled?
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
      * Convenience function to print a line in a given color
      *
      * @param string $line the line to print, a new line is added automatically
