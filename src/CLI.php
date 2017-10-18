@@ -32,6 +32,8 @@ abstract class CLI
         'emergency' => array('✘ ', Colors::C_LIGHTRED, STDERR),
     );
 
+    protected $logdefault = 'success';
+
     /**
      * constructor
      *
@@ -92,7 +94,7 @@ abstract class CLI
         );
         $this->options->registerOption(
             'loglevel',
-            'Minimum level of messages to display. Default is success. ' .
+            'Minimum level of messages to display. Default is ' . $this->logdefault . '. ' .
             'Valid levels are: debug, info, notice, success, warning, error, critical, alert, emergency.',
             null,
             'level'
@@ -109,7 +111,7 @@ abstract class CLI
             echo $this->options->help();
             exit(0);
         }
-        $level = $this->options->getOpt('loglevel', 'success');
+        $level = $this->options->getOpt('loglevel', $this->logdefault);
         if (!isset($this->loglevel[$level])) $this->fatal('Unknown log level');
         foreach (array_keys($this->loglevel) as $l) {
             if ($l == $level) break;
