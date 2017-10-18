@@ -8,6 +8,7 @@ It takes care of
 - **help page generation**
 - **automatic width adjustment**
 - **colored output**
+- **optional PSR3 compatibility**
 
 It is lightweight and has **no 3rd party dependencies**.
 
@@ -83,17 +84,19 @@ passing false to the constructor.
 You can use the provided ``splitbrain\phpcli\Exception`` to signal any problems within your main code yourself. The
 exceptions's code will be used as the exit code then.
 
+Stacktraces will be printed on log level `debug`. 
+
 ## Colored output
 
 Colored output is handled through the ``Colors`` class. It tries to detect if a color terminal is available and only
 then uses terminal colors. You can always suppress colored output by passing ``--no-colors`` to your scripts.
+Disabling colors will also disable the emoticon prefixes.
 
 Simple colored log messages can be printed by you using the convinence methods ``success()`` (green), ``info()`` (cyan),
 ``error()`` (red) or ``fatal()`` (red). The latter will also exit the programm with a non-zero exit code.
 
 For more complex coloring you can access the color class through ``$this->colors`` in your script. The ``wrap()`` method
 is probably what you want to use.
-
 
 The table formatter allows coloring full columns. To use that mechanism pass an array of colors as third parameter to
 its ``format()`` method. Please note that you can not pass colored texts in the second parameters (text length calculation
@@ -123,3 +126,33 @@ Space for borders is automatically calculated. It is recommended to always have 
 column to adjust for different terminal widths.
 
 The table formatter is used for the automatic help screen accessible when calling your script with ``-h`` or ``--help``.
+
+## PSR-3 Logging
+
+The CLI class is a fully PSR-3 compatible logger (printing colored log data to STDOUT and STDERR). This is useful when
+you call backend code from your CLI that expects a Logger instance to produce any sensible status output while running.
+ 
+To use this ability simply inherit from `splitbrain\phpcli\PSR3CLI` instead of `splitbrain\phpcli\CLI`, then pass `$this`
+as the logger instance. Be sure you have the suggested `psr/log` composer package installed.
+
+![Screenshot](screenshot2.png)
+
+You can adjust the verbosity of your CLI tool using the `--loglevel` parameter. Supported loglevels are the PSR-3
+loglevels and our own `success` level:
+
+* debug
+* info
+* notice      
+* success
+* warning
+* error
+* critical
+* alert
+* emergency
+
+Convenience methods for all log levels are available. Placeholder interpolation as described in PSR-3 is available, too.
+Messages from `warning` level onwards are printed to `STDERR` all below are printed to `STDOUT`. 
+
+The default log level of your script can be set by overwriting the `$logdefault` member.
+
+See `example/logging.php` for an example.
