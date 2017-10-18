@@ -32,7 +32,7 @@ abstract class CLI
         'emergency' => array('✘ ', Colors::C_LIGHTRED, STDERR),
     );
 
-    protected $logdefault = 'success';
+    protected $logdefault = 'info';
 
     /**
      * constructor
