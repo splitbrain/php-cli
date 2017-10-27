@@ -239,6 +239,9 @@ class TableFormatter
      */
     protected function strlen($string)
     {
+        // don't count color codes
+        $string = preg_replace("/\33\\[\\d+(;\\d+)?m/", '', $string);
+
         if (function_exists('mb_strlen')) {
             return mb_strlen($string, 'utf-8');
         }

@@ -2,6 +2,8 @@
 
 namespace splitbrain\phpcli\tests;
 
+use splitbrain\phpcli\Colors;
+
 class TableFormatter extends \splitbrain\phpcli\TableFormatter
 {
     public function calculateColLengths($columns)
@@ -95,10 +97,10 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
     }
 
-    public function test_lenght()
+    public function test_length()
     {
         $text = "this is häppy ☺";
-        $expect = "this is häppy ☺     |test";
+        $expect = "$text     |test";
 
         $tf = new TableFormatter();
         $tf->setBorder('|');
@@ -106,4 +108,17 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expect, trim($result));
     }
+
+    public function test_colorlength(){
+        $color = new Colors();
+
+        $text = 'this is '.$color->wrap('green', Colors::C_GREEN);
+        $expect = "$text       |test";
+
+        $tf = new TableFormatter();
+        $tf->setBorder('|');
+        $result = $tf->format([20, '*'], [$text, 'test']);
+
+        $this->assertEquals($expect, trim($result));
+        }
 }
