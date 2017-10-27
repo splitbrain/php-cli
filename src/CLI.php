@@ -94,7 +94,7 @@ abstract class CLI
         );
         $this->options->registerOption(
             'loglevel',
-            'Minimum level of messages to display. Default is ' . $this->logdefault . '. ' .
+            'Minimum level of messages to display. Default is ' . $this->colors->wrap($this->logdefault, Colors::C_CYAN) . '. ' .
             'Valid levels are: debug, info, notice, success, warning, error, critical, alert, emergency.',
             null,
             'level'
