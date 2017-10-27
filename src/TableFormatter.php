@@ -198,7 +198,7 @@ class TableFormatter
                 } else {
                     $val = '';
                 }
-                $chunk = sprintf('%-' . $width . 's', $val);
+                $chunk = $this->pad($val, $width);
                 if (isset($colors[$col]) && $colors[$col]) {
                     $chunk = $this->colors->wrap($chunk, $colors[$col]);
                 }
@@ -213,6 +213,22 @@ class TableFormatter
         }
         return $out;
 
+    }
+
+    /**
+     * Pad the given string to the correct length
+     *
+     * @param string $string
+     * @param int $len
+     * @return string
+     */
+    protected function pad($string, $len)
+    {
+        $strlen = $this->strlen($string);
+        if ($strlen > $len) return $string;
+
+        $pad = $len - $strlen;
+        return $string . str_pad('', $pad, ' ');
     }
 
     /**

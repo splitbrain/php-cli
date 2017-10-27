@@ -95,4 +95,15 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function test_lenght()
+    {
+        $text = "this is häppy ☺";
+        $expect = "this is häppy ☺     |test";
+
+        $tf = new TableFormatter();
+        $tf->setBorder('|');
+        $result = $tf->format([20, '*'], [$text, 'test']);
+
+        $this->assertEquals($expect, trim($result));
+    }
 }
