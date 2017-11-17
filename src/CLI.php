@@ -38,17 +38,18 @@ abstract class CLI
      * constructor
      *
      * Initialize the arguments, set up helper classes and set up the CLI environment
-     *
+     *     
      * @param bool $autocatch should exceptions be catched and handled automatically?
+     * @param 
      */
-    public function __construct($autocatch = true)
+    public function __construct($autocatch = true, $args = null)
     {
         if ($autocatch) {
             set_exception_handler(array($this, 'fatal'));
         }
 
         $this->colors = new Colors();
-        $this->options = new Options($this->colors);
+        $this->options = new Options($this->colors, $args);
     }
 
     /**
@@ -68,12 +69,16 @@ abstract class CLI
      * @return void
      */
     abstract protected function main(Options $options);
-
+    
     /**
      * Execute the CLI program
      *
      * Executes the setup() routine, adds default options, initiate the options parsing and argument checking
      * and finally executes main()
+     * 
+     * Returns result from main() 
+     * 
+     * @return mixed
      */
     public function run()
     {
@@ -122,9 +127,7 @@ abstract class CLI
         $this->options->checkArguments();
 
         // execute
-        $this->main($this->options);
-
-        exit(0);
+        return $this->main($this->options);
     }
 
     // region logging

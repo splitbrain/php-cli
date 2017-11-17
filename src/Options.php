@@ -35,9 +35,10 @@ class Options
      * Constructor
      *
      * @param Colors $colors optional configured color object
+     * @param array $args custom arguments
      * @throws Exception when arguments can't be read
      */
-    public function __construct(Colors $colors = null)
+    public function __construct(Colors $colors = null, $args = null)
     {
         if (!is_null($colors)) {
             $this->colors = $colors;
@@ -52,8 +53,12 @@ class Options
                 'help' => ''
             )
         ); // default command
-
-        $this->args = $this->readPHPArgv();
+        
+        if ($args === null) {
+          $this->args = $this->readPHPArgv();
+        }else{
+          $this->args = $args;
+        }
         $this->bin = basename(array_shift($this->args));
 
         $this->options = array();
@@ -463,6 +468,15 @@ class Options
             return $_SERVER['argv'];
         }
         return $argv;
+    }
+    
+    /**
+     * Sets
+     * 
+     * @param array $args
+     */
+    public function setArgs(array $args) {
+      
     }
 }
 
