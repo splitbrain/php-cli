@@ -1,5 +1,5 @@
 {
-  "name": "splitbrain/php-cli",
+  "name": "lottestyle/php-cli",
   "description": "Easy command line scripts for PHP with opt parsing and color output. No dependencies",
   "keywords": [
     "cli",
