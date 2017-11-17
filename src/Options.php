@@ -470,13 +470,5 @@ class Options
         return $argv;
     }
     
-    /**
-     * Sets
-     * 
-     * @param array $args
-     */
-    public function setArgs(array $args) {
-      
-    }
 }
 
