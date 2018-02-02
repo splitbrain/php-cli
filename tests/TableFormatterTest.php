@@ -109,10 +109,11 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expect, trim($result));
     }
 
-    public function test_colorlength(){
+    public function test_colorlength()
+    {
         $color = new Colors();
 
-        $text = 'this is '.$color->wrap('green', Colors::C_GREEN);
+        $text = 'this is ' . $color->wrap('green', Colors::C_GREEN);
         $expect = "$text       |test";
 
         $tf = new TableFormatter();
@@ -120,5 +121,21 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
         $result = $tf->format([20, '*'], [$text, 'test']);
 
         $this->assertEquals($expect, trim($result));
-        }
+    }
+
+    public function test_onewrap()
+    {
+        $col1 = "test\nwrap";
+        $col2 = "test";
+
+        $expect = "test |test \n" .
+            "wrap |     \n";
+
+        $tf = new TableFormatter();
+        $tf->setMaxWidth(11);
+        $tf->setBorder('|');
+
+        $result = $tf->format([5, '*'], [$col1, $col2]);
+        $this->assertEquals($expect, $result);
+    }
 }
