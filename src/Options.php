@@ -70,13 +70,23 @@ class Options
     }
 
     /**
-     * Sets the help text for the tools commands itself
+     * Sets the help text for the tool's commands
      *
      * @param string $help
      */
     public function setCommandHelp($help)
     {
         $this->setup['']['commandhelp'] = $help;
+    }
+
+    /**
+     * Sets the help text for the tools commands itself
+     *
+     * @param boolean $compact
+     */
+    public function setCompactHelp($compact=true)
+    {
+        $this->setup['']['compacthelp'] = $compact;
     }
 
     /**
@@ -346,6 +356,8 @@ class Options
         $hascommands = (count($this->setup) > 1);
         $commandhelp = $this->setup[""]["commandhelp"]
                      ?: 'This tool accepts a command as first parameter as outlined below:';
+        $compacthelp = $this->setup[""]["compacthelp"] ?: false;
+
         foreach ($this->setup as $command => $config) {
             $hasopts = (bool)$this->setup[$command]['opts'];
             $hasargs = (bool)$this->setup[$command]['args'];
@@ -357,7 +369,9 @@ class Options
                 $text .= '   ' . $this->bin;
                 $mv = 2;
             } else {
-                $text .= "\n";
+				if (!$compacthelp) {
+					$text .= "\n";
+				}
                 $text .= $this->colors->wrap('   ' . $command, Colors::C_PURPLE);
                 $mv = 4;
             }
@@ -378,21 +392,24 @@ class Options
                 }
                 $text .= ' ' . $out;
             }
-            $text .= "\n";
+            if (!$compacthelp) {
+                $text .= "\n";
+            }
 
             // usage or command intro
             if ($this->setup[$command]['help']) {
                 $text .= "\n";
                 $text .= $tf->format(
                     array($mv, '*'),
-                    array('', $this->setup[$command]['help'] . "\n")
+                    array('', $this->setup[$command]['help']
+						  . ($compacthelp ? '' : "\n"))
                 );
             }
 
             // option description
             if ($hasopts) {
                 if (!$command) {
-                    $text .= "\n";
+					$text .= "\n";
                     $text .= $this->colors->wrap('OPTIONS:', Colors::C_BROWN);
                 }
                 $text .= "\n";
@@ -411,12 +428,15 @@ class Options
                         $name .= ' <' . $opt['needsarg'] . '>';
                     }
 
+                    if (!$compacthelp) {
+                        $text .= "\n";
+                    }
+
                     $text .= $tf->format(
                         array($mv, '30%', '*'),
                         array('', $name, $opt['help']),
                         array('', 'green', '')
                     );
-                    $text .= "\n";
                 }
             }
 
@@ -426,7 +446,9 @@ class Options
                     $text .= "\n";
                     $text .= $this->colors->wrap('ARGUMENTS:', Colors::C_BROWN);
                 }
-                $text .= "\n";
+                if (!$compacthelp) {
+                    $text .= "\n";
+                }
                 foreach ($this->setup[$command]['args'] as $arg) {
                     $name = '<' . $arg['name'] . '>';
 
@@ -447,7 +469,9 @@ class Options
                     array($mv, '*'),
                     array('', $commandhelp)
                 );
-                $text .= "\n";
+                if (!$compacthelp) {
+                    $text .= "\n";
+                }
             }
         }
 
