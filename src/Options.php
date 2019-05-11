@@ -70,6 +70,16 @@ class Options
     }
 
     /**
+     * Sets the help text for the tools commands itself
+     *
+     * @param string $help
+     */
+    public function setCommandHelp($help)
+    {
+        $this->setup['']['commandhelp'] = $help;
+    }
+
+    /**
      * Register the names of arguments for help generation and number checking
      *
      * This has to be called in the order arguments are expected
@@ -334,6 +344,8 @@ class Options
         $text = '';
 
         $hascommands = (count($this->setup) > 1);
+        $commandhelp = $this->setup[""]["commandhelp"]
+                     ?: 'This tool accepts a command as first parameter as outlined below:';
         foreach ($this->setup as $command => $config) {
             $hasopts = (bool)$this->setup[$command]['opts'];
             $hasargs = (bool)$this->setup[$command]['args'];
@@ -433,7 +445,7 @@ class Options
                 $text .= "\n";
                 $text .= $tf->format(
                     array($mv, '*'),
-                    array('', 'This tool accepts a command as first parameter as outlined below:')
+                    array('', $commandhelp)
                 );
                 $text .= "\n";
             }
