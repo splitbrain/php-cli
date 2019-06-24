@@ -24,7 +24,7 @@
   "require": {
     "php": ">=5.3.0",
     "jakub-onderka/php-console-color": "0.1",
-    "hexmode/io-mode": "1.0"
+    "hexmode/io-mode": "0.9"
   },
   "suggest": {
     "psr/log": "Allows you to make the CLI available as PSR-3 logger"
