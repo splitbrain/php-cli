@@ -99,6 +99,9 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
     public function test_length()
     {
+        if(!extension_loaded('mbstring')) {
+            $this->markTestSkipped('No multi-byte handling in this PHP.');
+        }
         $text = "this is häppy ☺";
         $expect = "$text     |test";
 
