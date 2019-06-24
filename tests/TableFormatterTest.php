@@ -104,7 +104,7 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
         $tf = new TableFormatter();
         $tf->setBorder('|');
-        $result = $tf->format([20, '*'], [$text, 'test']);
+        $result = $tf->format(array(20, '*'), array($text, 'test'));
 
         $this->assertEquals($expect, trim($result));
     }
@@ -118,7 +118,7 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
 
         $tf = new TableFormatter();
         $tf->setBorder('|');
-        $result = $tf->format([20, '*'], [$text, 'test']);
+        $result = $tf->format(array(20, '*'), array($text, 'test'));
 
         $this->assertEquals($expect, trim($result));
     }
@@ -135,7 +135,7 @@ class TableFormatterTest extends \PHPUnit_Framework_TestCase
         $tf->setMaxWidth(11);
         $tf->setBorder('|');
 
-        $result = $tf->format([5, '*'], [$col1, $col2]);
+        $result = $tf->format(array(5, '*'), array($col1, $col2));
         $this->assertEquals($expect, $result);
     }
 }
