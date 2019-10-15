@@ -78,11 +78,11 @@ for further info.
 ## Exceptions
 
 By default the CLI class registers an exception handler and will print the exception's message to the end user and
-exit the programm with a non-zero exit code. You can disable this behaviour and catch all exceptions yourself by
+exit the program with a non-zero exit code. You can disable this behaviour and catch all exceptions yourself by
 passing false to the constructor.
 
 You can use the provided ``splitbrain\phpcli\Exception`` to signal any problems within your main code yourself. The
-exceptions's code will be used as the exit code then.
+exception's code will be used as the exit code then.
 
 Stacktraces will be printed on log level `debug`. 
 
