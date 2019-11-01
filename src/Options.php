@@ -25,6 +25,8 @@ class Options
     /** @var  array passed non-option arguments */
     protected $args = array();
 
+    protected $parsePass = 1;
+
     /** @var  string the executed script */
     protected $bin;
 
@@ -58,7 +60,7 @@ class Options
 
         $this->options = array();
     }
-    
+
     /**
      * Gets the bin value
      */
@@ -78,6 +80,29 @@ class Options
     }
 
     /**
+     * Returns true if a command has been registered in the main setup class property
+     * or throws an exception if the command or one of an array of commands is not registered
+     * @param string/array of strings The command name
+     * @throws Exception
+    **/
+    public function commandRegistered( $commands ) 
+    {
+        if( is_array( $commands ) )
+        {
+            foreach( $commands as $command ) {
+                $this->commandRegistered( $command );
+            }
+            return true;
+        }
+
+        if(!isset($this->setup[$commands])) {
+            throw new Exception("Command $commands not registered");
+        }
+
+        return true;
+    }
+
+    /**
      * Register the names of arguments for help generation and number checking
      *
      * This has to be called in the order arguments are expected
@@ -90,15 +115,22 @@ class Options
      */
     public function registerArgument($arg, $help, $required = true, $command = '')
     {
-        if (!isset($this->setup[$command])) {
-            throw new Exception("Command $command not registered");
-        }
+        $commands = (array)$command;
+        $this->commandRegistered($commands);
 
-        $this->setup[$command]['args'][] = array(
-            'name' => $arg,
-            'help' => $help,
-            'required' => $required
-        );
+        foreach( $commands as $command ) {
+            $this->setup[$command]['args'][] = array(
+                'name' => $arg,
+                'help' => $help,
+                'required' => $required
+            );
+        }
+    }
+
+
+    public function getArgument( $index )
+    {
+        return $this->args[$index];
     }
 
     /**
@@ -121,7 +153,6 @@ class Options
             'args' => array(),
             'help' => $help
         );
-
     }
 
     /**
@@ -136,22 +167,23 @@ class Options
      */
     public function registerOption($long, $help, $short = null, $needsarg = false, $command = '')
     {
-        if (!isset($this->setup[$command])) {
-            throw new Exception("Command $command not registered");
+        $commands = (array)$command;
+        $this->commandRegistered($commands);
+
+        if ($short && strlen($short) > 1) {
+            throw new Exception("Short options should be exactly one ASCII character");
         }
 
-        $this->setup[$command]['opts'][$long] = array(
-            'needsarg' => $needsarg,
-            'help' => $help,
-            'short' => $short
-        );
+        foreach( $commands as $command ) {
+            $this->setup[$command]['opts'][$long] = array(
+                'needsarg' => $needsarg,
+                'help' => $help,
+                'short' => $short
+            );
 
-        if ($short) {
-            if (strlen($short) > 1) {
-                throw new Exception("Short options should be exactly one ASCII character");
+            if ($short) {
+                $this->setup[$command]['short'][$short] = $long;
             }
-
-            $this->setup[$command]['short'][$short] = $long;
         }
     }
 
@@ -185,7 +217,7 @@ class Options
      * Parses the given arguments for known options and command
      *
      * The given $args array should NOT contain the executed file as first item anymore! The $args
-     * array is stripped from any options and possible command. All found otions can be accessed via the
+     * array is stripped from any options and possible command. All found options can be accessed via the
      * getOpt() function
      *
      * Note that command options will overwrite any global options with the same name
@@ -196,6 +228,12 @@ class Options
      */
     public function parseOptions()
     {
+        if( $this->parsePass == 1 && substr($this->args[0],0,1) != '-' )
+        {
+            // throw an exception if the supplied command is not a registered command
+            $this->commandRegistered($this->args[0]);
+        }
+
         $non_opts = array();
 
         $argc = count($this->args);
@@ -279,6 +317,8 @@ class Options
         if (!$this->command && $this->args && isset($this->setup[$this->args[0]])) {
             // it is a command!
             $this->command = array_shift($this->args);
+            $this->commandRegistered($this->command);
+            $this->parsePass++;
             $this->parseOptions(); // second pass
         }
     }
