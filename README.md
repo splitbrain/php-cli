@@ -157,7 +157,7 @@ The default log level of your script can be set by overwriting the `$logdefault`
 
 See `example/logging.php` for an example.
 
-##Command Example
+## Command Example
 ```php
 #!/usr/bin/php
 <?php
