@@ -95,12 +95,11 @@ class TableFormatter
         if (isset($_SERVER['COLUMNS'])) return (int)$_SERVER['COLUMNS'];
 
         // via tput
-        $process = proc_open('tput cols', array(
-            1 => array('pipe', 'w'),
-            2 => array('pipe', 'w'),
-        ), $pipes);
-        $width = (int)stream_get_contents($pipes[1]);
-        proc_close($process);
+        $width = shell_exec( 'tput cols' );
+        if( $width != (int)$width )
+        {
+            return 80;
+        }
 
         return $width;
     }
