@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace splitbrain\phpcli\tests;
 
@@ -6,7 +6,7 @@ use splitbrain\phpcli\Colors;
 
 class TableFormatter extends \splitbrain\phpcli\TableFormatter
 {
-    public function calculateColLengths($columns)
+    public function calculateColLengths(array $columns) : array
     {
         return parent::calculateColLengths($columns);
     }

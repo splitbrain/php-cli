@@ -29,7 +29,7 @@ class TableFormatter
     public function __construct(Colors $colors = null)
     {
         // try to get terminal width
-        $width = $this->getTerminalWidth();
+        $width = trim( $this->getTerminalWidth() );
         if ($width) {
             $this->max = $width - 1;
         }
@@ -89,7 +89,7 @@ class TableFormatter
      *
      * @return int terminal width, 0 if unknown
      */
-    protected function getTerminalWidth()
+    protected function getTerminalWidth() : int
     {
         // from environment
         if (isset($_SERVER['COLUMNS'])) return (int)$_SERVER['COLUMNS'];
@@ -101,7 +101,7 @@ class TableFormatter
             return 80;
         }
 
-        return $width;
+        return (int)$width;
     }
 
     /**
@@ -115,7 +115,7 @@ class TableFormatter
      * @return int[]
      * @throws Exception
      */
-    protected function calculateColLengths($columns)
+    protected function calculateColLengths(array $columns) : array
     {
         $idx = 0;
         $border = $this->strlen($this->border);
