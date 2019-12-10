@@ -11,30 +11,41 @@ class Options extends \splitbrain\phpcli\Options
 class OptionsTest extends \PHPUnit_Framework_TestCase
 {
 
-    function test_simpleshort()
-    {
+    /**
+     * @dataProvider optionDataProvider
+     *
+     * @param string $option
+     * @param string $value
+     * @param string $argument
+     */
+    function test_optionvariants(
+        $option,
+        $value,
+        $argument
+    ) {
         $options = new Options();
         $options->registerOption('exclude', 'exclude files', 'x', 'file');
 
-        $options->args = array('-x', 'foo', 'bang');
+        $options->args = array($option, $value, $argument);
         $options->parseOptions();
 
-        $this->assertEquals('foo', $options->getOpt('exclude'));
-        $this->assertEquals(array('bang'), $options->args);
+        $this->assertEquals($value, $options->getOpt('exclude'));
+        $this->assertEquals(array($argument), $options->args);
         $this->assertFalse($options->getOpt('nothing'));
     }
 
-    function test_simplelong1()
-    {
-        $options = new Options();
-        $options->registerOption('exclude', 'exclude files', 'x', 'file');
-
-        $options->args = array('--exclude', 'foo', 'bang');
-        $options->parseOptions();
-
-        $this->assertEquals('foo', $options->getOpt('exclude'));
-        $this->assertEquals(array('bang'), $options->args);
-        $this->assertFalse($options->getOpt('nothing'));
+    /**
+     * @return array
+     */
+    public function optionDataProvider() {
+        return array(
+            array('-x', 'foo', 'bang'),
+            array('--exclude', 'foo', 'bang'),
+            array('-x', 'foo-bar', 'bang'),
+            array('--exclude', 'foo-bar', 'bang'),
+            array('-x', 'foo', 'bang--bang'),
+            array('--exclude', 'foo', 'bang--bang'),
+        );
     }
 
     function test_simplelong2()
