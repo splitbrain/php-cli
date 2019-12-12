@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class splitbrain\phpcli\CLI</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?49f43d3208c5d7e33fa16d36107a345bf11cc00d">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-splitbrain.phpcli.html" title="Summary of splitbrain\phpcli"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+					<li class="divider-vertical"></li>
+
+					<li>
+						<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+					</li>
+
+						<li>
+							<a href="annotation-group-deprecated.html" title="List of elements with deprecated annotation">
+								<span>Deprecated</span>
+							</a>
+						</li>
+						<li>
+							<a href="annotation-group-todo.html" title="List of elements with todo annotation">
+								<span>Todo</span>
+							</a>
+						</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-splitbrain.html">
+							splitbrain<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-splitbrain.phpcli.html">
+							phpcli						</a>
+							</li>
+								</ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-splitbrain.phpcli.CLI.html">CLI</a></li>
+				<li><a href="class-splitbrain.phpcli.Colors.html">Colors</a></li>
+				<li><a href="class-splitbrain.phpcli.Options.html">Options</a></li>
+				<li><a href="class-splitbrain.phpcli.PSR3CLI.html">PSR3CLI</a></li>
+				<li><a href="class-splitbrain.phpcli.TableFormatter.html">TableFormatter</a></li>
+			</ul>
+
+
+
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-splitbrain.phpcli.Exception.html">Exception</a></li>
+			</ul>
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class CLI</h1>
+
+
+	<div class="description">
+	<p>Class CLI</p>
+
+<p>Your commandline script should inherit from this class and implement the abstract methods.</p>
+	</div>
+
+
+
+	<div>
+		<h3>Direct known subclasses</h3>
+		<p class="elementList">
+			<code><a href="class-splitbrain.phpcli.PSR3CLI.html">splitbrain\phpcli\PSR3CLI</a></code>
+		</p>
+	</div>
+
+
+
+
+
+
+	<div class="alert alert-info">
+		<b>Abstract</b><br>
+		
+		<b>Namespace:</b> <a href="namespace-splitbrain.html">splitbrain</a>\<a href="namespace-splitbrain.phpcli.html">phpcli</a><br>
+		
+
+				<b>License:</b>
+				<a href="MIT">MIT</a><br>
+				<b>Author:</b>
+				Andreas Gohr <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x6e;&#x64;&#x69;&#x40;&#x73;&#x70;&#108;&#105;&#116;&#98;&#114;&#97;&#105;&#110;&#46;&#111;&#114;&#103;">&#x61;&#x6e;&#x64;&#x69;&#x40;&#x73;&#x70;&#108;&#105;&#116;&#98;&#114;&#97;&#105;&#110;&#46;&#111;&#114;&#103;</a><br>
+			<b>Located at</b> <a href="source-class-splitbrain.phpcli.CLI.html#5-362" title="Go to source code">CLI.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#37-52" title="Go to source code">__construct</a>( <span>boolean <var>$autocatch</var> = <span class="php-keyword1">true</span></span> )</code>
+
+			<div class="description short">
+				<p>constructor</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>constructor</p>
+
+<p>Initialize the arguments, set up helper classes and set up the CLI environment</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$autocatch</var></dt>
+						<dd>should exceptions be catched and handled automatically?</dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="run" id="_run">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_run">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#76-100" title="Go to source code">run</a>( )</code>
+
+			<div class="description short">
+				<p>Execute the CLI program</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Execute the CLI program</p>
+
+<p>Executes the setup() routine, adds default options, initiate the options parsing and argument checking
+and finally executes main() - Each part is split into their own protected function below, so behaviour
+can easily be overwritten</p>
+
+
+
+
+					<h4>Throws</h4>
+					<div class="list">
+						<code><a href="class-splitbrain.phpcli.Exception.html">splitbrain\phpcli\Exception</a></code>
+					</div>
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="fatal" id="_fatal">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_fatal">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#182-205" title="Go to source code">fatal</a>( <span>Exception|string <var>$error</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Exits the program on a fatal error</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Exits the program on a fatal error</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$error</var></dt>
+						<dd>either an exception or an error message</dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="emergency" id="_emergency">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_emergency">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#207-218" title="Go to source code">emergency</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>System is unusable.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>System is unusable.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="alert" id="_alert">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_alert">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#220-232" title="Go to source code">alert</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Action must be taken immediately.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Action must be taken immediately.</p>
+
+<p>Example: Entire website down, database unavailable, etc. This should
+trigger the SMS alerts and wake you up.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="critical" id="_critical">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_critical">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#234-245" title="Go to source code">critical</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Critical conditions.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Critical conditions.</p>
+
+<p>Example: Application component unavailable, unexpected exception.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="error" id="_error">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_error">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#247-257" title="Go to source code">error</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Runtime errors that do not require immediate action but should typically
+be logged and monitored.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Runtime errors that do not require immediate action but should typically
+be logged and monitored.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="warning" id="_warning">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_warning">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#259-271" title="Go to source code">warning</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Exceptional occurrences that are not errors.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Exceptional occurrences that are not errors.</p>
+
+<p>Example: Use of deprecated APIs, poor use of an API, undesirable things
+that are not necessarily wrong.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="success" id="_success">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_success">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#273-282" title="Go to source code">success</a>( <span>string <var>$string</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Normal, positive outcome</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Normal, positive outcome</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$string</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="notice" id="_notice">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_notice">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#284-293" title="Go to source code">notice</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Normal but significant events.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Normal but significant events.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="info" id="_info">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_info">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#295-306" title="Go to source code">info</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Interesting events.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Interesting events.</p>
+
+<p>Example: User logs in, SQL logs.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="debug" id="_debug">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_debug">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#308-317" title="Go to source code">debug</a>( <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Detailed debug information.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Detailed debug information.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="log" id="_log">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_log">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#319-337" title="Go to source code">log</a>( <span>string <var>$level</var></span>, <span>string <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$level</var></dt>
+						<dd></dd>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="interpolate" id="_interpolate">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_interpolate">#</a>
+			<code><a href="source-class-splitbrain.phpcli.CLI.html#339-359" title="Go to source code">interpolate</a>( <span> <var>$message</var></span>, <span>array <var>$context</var> = <span class="php-keyword1">array</span>()</span> )</code>
+
+			<div class="description short">
+				<p>Interpolates context values into the message placeholders.</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Interpolates context values into the message placeholders.</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$message</var></dt>
+						<dd></dd>
+						<dt><var>$context</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="colors" id="$colors">
+			<td class="attributes"><code>
+				public  
+				<code><a href="class-splitbrain.phpcli.Colors.html">splitbrain\phpcli\Colors</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-splitbrain.phpcli.CLI.html#19-20" title="Go to source code"><var>$colors</var></a>
+
+				<div class="description short">
+					
+				</div>
+
+				<div class="description detailed hidden">
+					
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$colors" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
