@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class splitbrain\phpcli\PSR3CLI</title>
+	<title>Class logging</title>
 
 	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
@@ -18,18 +18,18 @@
 		<div id="groups">
 				<h3>Namespaces</h3>
 			<ul>
-				<li>
+				<li class="active">
 					<a href="namespace-None.html">
 						None					</a>
 
 						</li>
-				<li class="active">
+				<li>
 					<a href="namespace-splitbrain.html">
 						splitbrain<span></span>
 					</a>
 
 						<ul>
-				<li class="active">
+				<li>
 					<a href="namespace-splitbrain.phpcli.html">
 						phpcli<span></span>
 					</a>
@@ -50,19 +50,12 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-splitbrain.phpcli.CLI.html">CLI</a></li>
-				<li><a href="class-splitbrain.phpcli.Colors.html">Colors</a></li>
-				<li><a href="class-splitbrain.phpcli.Options.html">Options</a></li>
-				<li class="active"><a href="class-splitbrain.phpcli.PSR3CLI.html">PSR3CLI</a></li>
-				<li><a href="class-splitbrain.phpcli.TableFormatter.html">TableFormatter</a></li>
+				<li class="active"><a href="class-logging.html">logging</a></li>
+				<li><a href="class-Minimal.html">Minimal</a></li>
 			</ul>
 
 
 
-			<h3>Exceptions</h3>
-			<ul>
-				<li><a href="class-splitbrain.phpcli.Exception.html">Exception</a></li>
-			</ul>
 
 
 		</div>
@@ -85,7 +78,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-splitbrain.phpcli.html" title="Summary of splitbrain\phpcli"><span>Namespace</span></a>
+				<a href="namespace-None.html" title="Summary of None"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -97,13 +90,13 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class PSR3CLI</h1>
+	<h1>Class logging</h1>
 
 
 	<div class="description">
-	<p>Class PSR3CLI</p>
+	<p>Class CLI</p>
 
-<p>The same as CLI, but implements the PSR-3 logger interface</p>
+<p>Your commandline script should inherit from this class and implement the abstract methods.</p>
 	</div>
 
 	<dl class="tree">
@@ -115,9 +108,7 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by">
-<b><span>splitbrain\phpcli\PSR3CLI</span></b>			
-			 implements 
-<span>Psr\Log\LoggerInterface</span>
+<b><span>logging</span></b>			
 			
 			
 		</dd>
@@ -131,17 +122,104 @@
 
 
 	<div class="info">
-		<b>Abstract</b><br>
 		
-		<b>Namespace:</b> <a href="namespace-splitbrain.html">splitbrain</a>\<a href="namespace-splitbrain.phpcli.html">phpcli</a><br>
+		
+		
 		
 
-			<b>Located at</b> <a href="source-class-splitbrain.phpcli.PSR3CLI.html#7-13" title="Go to source code">src/PSR3CLI.php</a>
+				<b>License:</b>
+				<a href="MIT">MIT</a><br>
+				<b>Author:</b>
+				Andreas Gohr <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x61;&#x6e;&#x64;&#x69;&#x40;&#x73;&#x70;&#108;&#105;&#116;&#98;&#114;&#97;&#105;&#110;&#46;&#111;&#114;&#103;">&#x61;&#x6e;&#x64;&#x69;&#x40;&#x73;&#x70;&#108;&#105;&#116;&#98;&#114;&#97;&#105;&#110;&#46;&#111;&#114;&#103;</a><br>
+			<b>Located at</b> <a href="source-class-logging.html#8-33" title="Go to source code">examples/logging.php</a>
 		<br>
 	</div>
 
 
 
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="setup" id="_setup">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setup">#</a>
+		<code><a href="source-class-logging.html#14-17" title="Go to source code">setup</a>( <span><code><a href="class-splitbrain.phpcli.Options.html">splitbrain\phpcli\Options</a></code> <var>$options</var></span> )</code>
+
+		<div class="description short">
+			<p>Register options and arguments on the given $options object</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Register options and arguments on the given $options object</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$options</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="main" id="_main">
+
+		<td class="attributes"><code>
+			 protected 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_main">#</a>
+		<code><a href="source-class-logging.html#20-32" title="Go to source code">main</a>( <span><code><a href="class-splitbrain.phpcli.Options.html">splitbrain\phpcli\Options</a></code> <var>$options</var></span> )</code>
+
+		<div class="description short">
+			<p>Your main program</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Your main program</p>
+
+<p>Arguments and options have been parsed when this is run</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$options</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					Exception
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Methods inherited from <a href="class-splitbrain.phpcli.CLI.html#methods">splitbrain\phpcli\CLI</a></caption>
@@ -160,12 +238,10 @@
 			<a href="class-splitbrain.phpcli.CLI.html#_info">info()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_interpolate">interpolate()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_log">log()</a>, 
-			<a href="class-splitbrain.phpcli.CLI.html#_main">main()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_notice">notice()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_parseOptions">parseOptions()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_registerDefaultOptions">registerDefaultOptions()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_run">run()</a>, 
-			<a href="class-splitbrain.phpcli.CLI.html#_setup">setup()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_setupLogging">setupLogging()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_success">success()</a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#_warning">warning()</a>
@@ -183,6 +259,34 @@
 
 
 
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="logdefault" id="$logdefault">
+		<td class="attributes"><code>
+			protected  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-logging.html#11" title="Go to source code"><var>$logdefault</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$logdefault" class="anchor">#</a>
+				<code><span class="php-quote">'debug'</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
 
 	<table class="summary inherited">
 	<caption>Properties inherited from <a href="class-splitbrain.phpcli.CLI.html#properties">splitbrain\phpcli\CLI</a></caption>
@@ -190,7 +294,6 @@
 		<td><code>
 			<a href="class-splitbrain.phpcli.CLI.html#$bin"><var>$bin</var></a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#$colors"><var>$colors</var></a>, 
-			<a href="class-splitbrain.phpcli.CLI.html#$logdefault"><var>$logdefault</var></a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#$loglevel"><var>$loglevel</var></a>, 
 			<a href="class-splitbrain.phpcli.CLI.html#$options"><var>$options</var></a>
 		</code></td>
