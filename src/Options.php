@@ -49,7 +49,8 @@ class Options
             '' => array(
                 'opts' => array(),
                 'args' => array(),
-                'help' => ''
+                'help' => '',
+                'commandhelp' => 'This tool accepts a command as first parameter as outlined below:'
             )
         ); // default command
 
@@ -352,8 +353,8 @@ class Options
         $text = '';
 
         $hascommands = (count($this->setup) > 1);
-        $commandhelp = $this->setup[""]["commandhelp"]
-                     ?: 'This tool accepts a command as first parameter as outlined below:';
+        $commandhelp = $this->setup['']["commandhelp"];
+
         foreach ($this->setup as $command => $config) {
             $hasopts = (bool)$this->setup[$command]['opts'];
             $hasargs = (bool)$this->setup[$command]['args'];
