@@ -4,11 +4,10 @@ namespace splitbrain\phpcli\tests;
 
 class Options extends \splitbrain\phpcli\Options
 {
-
     public $args;
 }
 
-class OptionsTest extends \PHPUnit_Framework_TestCase
+class OptionsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

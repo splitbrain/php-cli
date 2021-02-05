@@ -23,7 +23,7 @@ class TableFormatter extends \splitbrain\phpcli\TableFormatter
 
 }
 
-class TableFormatterTest extends \PHPUnit_Framework_TestCase
+class TableFormatterTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
