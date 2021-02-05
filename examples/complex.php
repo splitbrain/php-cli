@@ -31,6 +31,7 @@ class Complex extends CLI
         $options->registerOption('load', 'Another flag only for the bar command, requiring an argument', 'l', 'input',
             'bar');
 
+        $options->registerCommand('compact', 'Display the help text in a more compact manner');
     }
 
     /**
@@ -51,6 +52,10 @@ class Complex extends CLI
             case 'bar':
                 $this->success('The bar command was called');
                 break;
+            case 'compact':
+                $options->useCompactHelp();
+                echo $options->help();
+                exit;
             default:
                 $this->error('No known command was called, we show the default help instead:');
                 echo $options->help();
