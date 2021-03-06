@@ -180,7 +180,7 @@ class Options
     }
 
     /**
-     * Checks the actual number of arguments against the required number
+     * Checks the actual number of arguments against the required number and also check if the arguments key > value are pairs
      *
      * Throws an exception if arguments are missing.
      *
@@ -191,6 +191,10 @@ class Options
     public function checkArguments()
     {
         $argc = count($this->args);
+        
+        if ($argc % 2 != 0) {
+			throw new Exception("Not enough arguments", Exception::E_OPT_ARG_REQUIRED);
+		}
 
         $req = 0;
         foreach ($this->setup[$this->command]['args'] as $arg) {
@@ -352,6 +356,29 @@ class Options
     {
         return $this->args;
     }
+    
+   
+	/**
+	 * Get specific argument by key passed to the script
+	 *
+	 * This will not contain any recognized options or the script name itself
+	 *
+	 * Can only be used after checkArguments() has been run
+	 *
+	 * @return null|string
+	 */
+
+	public function getArg($arg_key = '') {
+		if ($arg_key) {
+			foreach ($this->args as $i => $arg) {
+				if ($arg_key === $arg) {
+					return $this->args[$i + 1];
+				}
+			}
+		}
+		return null;
+	}
+    
 
     /**
      * Builds a help screen from the available options. You may want to call it from -h or on error
