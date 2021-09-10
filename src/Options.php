@@ -62,7 +62,7 @@ class Options
 
         $this->options = array();
     }
-    
+
     /**
      * Gets the bin value
      */
@@ -241,8 +241,13 @@ class Options
 
             // first non-option
             if ($arg[0] != '-') {
-                $non_opts = array_merge($non_opts, array_slice($this->args, $i));
-                break;
+                if (!$this->command) {
+                    $non_opts = array_merge($non_opts, array_slice($this->args, $i));
+                    break;
+                } else {
+                    $non_opts[] = $arg;
+                    continue;
+                }
             }
 
             // long option
@@ -250,13 +255,18 @@ class Options
                 $arg = explode('=', substr($arg, 2), 2);
                 $opt = array_shift($arg);
                 $val = array_shift($arg);
+                $opt_settings = null;
 
-                if (!isset($this->setup[$this->command]['opts'][$opt])) {
+                if (isset($this->setup[$this->command]['opts'][$opt])) {
+                    $opt_settings = $this->setup[$this->command]['opts'][$opt];
+                } elseif (isset($this->setup['']['opts'][$opt])) {
+                    $opt_settings = $this->setup['']['opts'][$opt];
+                } else {
                     throw new Exception("No such option '$opt'", Exception::E_UNKNOWN_OPT);
                 }
 
                 // argument required?
-                if ($this->setup[$this->command]['opts'][$opt]['needsarg']) {
+                if ($opt_settings['needsarg']) {
                     if (is_null($val) && $i + 1 < $argc && !preg_match('/^--?[\w]/', $this->args[$i + 1])) {
                         $val = $this->args[++$i];
                     }
@@ -274,14 +284,19 @@ class Options
 
             // short option
             $opt = substr($arg, 1);
-            if (!isset($this->setup[$this->command]['short'][$opt])) {
-                throw new Exception("No such option $arg", Exception::E_UNKNOWN_OPT);
+            $opt_settings = null;
+            if (isset($this->setup[$this->command]['short'][$opt])) {
+                $opt = $this->setup[$this->command]['short'][$opt];
+                $opt_settings = $this->setup[$this->command]['opts'][$opt];
+            } elseif (isset($this->setup['']['short'][$opt])) {
+                $opt = $this->setup['']['short'][$opt];
+                $opt_settings = $this->setup['']['opts'][$opt];
             } else {
-                $opt = $this->setup[$this->command]['short'][$opt]; // store it under long name
+                throw new Exception("No such option $arg", Exception::E_UNKNOWN_OPT);
             }
 
             // argument required?
-            if ($this->setup[$this->command]['opts'][$opt]['needsarg']) {
+            if ($opt_settings['needsarg']) {
                 $val = null;
                 if ($i + 1 < $argc && !preg_match('/^--?[\w]/', $this->args[$i + 1])) {
                     $val = $this->args[++$i];
@@ -501,4 +516,3 @@ class Options
         return $argv;
     }
 }
-

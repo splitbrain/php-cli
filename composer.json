@@ -30,5 +30,8 @@
     "psr-4": {
       "splitbrain\\phpcli\\": "src"
     }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
   }
 }

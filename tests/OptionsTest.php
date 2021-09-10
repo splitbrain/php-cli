@@ -65,14 +65,16 @@ class OptionsTest extends \PHPUnit\Framework\TestCase
         $options = new Options();
 
         $options->registerOption('plugins', 'run on plugins only', 'p');
+        $options->registerOption('dir', 'directory path', 'd', true);
         $options->registerCommand('status', 'display status info');
         $options->registerOption('long', 'display long lines', 'l', false, 'status');
 
-        $options->args = array('-p', 'status', '--long', 'foo');
+        $options->args = array('-p', 'status', '--dir', './file', 'foo', '--long');
         $options->parseOptions();
 
         $this->assertEquals('status', $options->getCmd());
         $this->assertTrue($options->getOpt('plugins'));
+        $this->assertEquals('./file', $options->getOpt('dir'));
         $this->assertTrue($options->getOpt('long'));
         $this->assertEquals(array('foo'), $options->args);
     }
