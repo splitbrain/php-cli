@@ -25,11 +25,11 @@ abstract class CLI
         'info' => array('ℹ ', Colors::C_CYAN, STDOUT),
         'notice' => array('☛ ', Colors::C_CYAN, STDOUT),
         'success' => array('✓ ', Colors::C_GREEN, STDOUT),
-        'warning' => array('⚠ ', Colors::C_BROWN, STDERR),
+        'warning' => array('⚠ ', Colors::C_YELLOW, STDERR),
         'error' => array('✗ ', Colors::C_RED, STDERR),
-        'critical' => array('☠ ', Colors::C_LIGHTRED, STDERR),
-        'alert' => array('✖ ', Colors::C_LIGHTRED, STDERR),
-        'emergency' => array('✘ ', Colors::C_LIGHTRED, STDERR),
+        'critical' => array('☠ ', Colors::C_LIGHT_RED, STDERR),
+        'alert' => array('✖ ', Colors::C_LIGHT_RED, STDERR),
+        'emergency' => array('✘ ', Colors::C_LIGHT_RED, STDERR),
     );
 
     protected $logdefault = 'info';
