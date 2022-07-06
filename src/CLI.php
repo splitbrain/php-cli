@@ -2,6 +2,8 @@
 
 namespace splitbrain\phpcli;
 
+use Stringable;
+
 /**
  * Class CLI
  *
@@ -212,7 +214,7 @@ abstract class CLI
      *
      * @return void
      */
-    public function emergency($message, array $context = array())
+    public function emergency(Stringable|string $message, array $context = array()): void
     {
         $this->log('emergency', $message, $context);
     }
@@ -226,7 +228,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function alert($message, array $context = array())
+    public function alert(Stringable|string $message, array $context = array()): void
     {
         $this->log('alert', $message, $context);
     }
@@ -239,7 +241,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function critical($message, array $context = array())
+    public function critical(Stringable|string $message, array $context = array()): void
     {
         $this->log('critical', $message, $context);
     }
@@ -251,7 +253,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function error($message, array $context = array())
+    public function error(Stringable|string $message, array $context = array()): void
     {
         $this->log('error', $message, $context);
     }
@@ -265,7 +267,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function warning($message, array $context = array())
+    public function warning(Stringable|string $message, array $context = array()): void
     {
         $this->log('warning', $message, $context);
     }
@@ -287,7 +289,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function notice($message, array $context = array())
+    public function notice(Stringable|string $message, array $context = array()): void
     {
         $this->log('notice', $message, $context);
     }
@@ -300,7 +302,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function info($message, array $context = array())
+    public function info(Stringable|string $message, array $context = array()): void
     {
         $this->log('info', $message, $context);
     }
@@ -311,7 +313,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function debug($message, array $context = array())
+    public function debug(Stringable|string $message, array $context = array()): void
     {
         $this->log('debug', $message, $context);
     }
@@ -321,7 +323,7 @@ abstract class CLI
      * @param string $message
      * @param array $context
      */
-    public function log($level, $message, array $context = array())
+    public function log($level, Stringable|string $message, array $context = array()): void
     {
         // is this log level wanted?
         if (!isset($this->loglevel[$level])) return;
@@ -343,7 +345,7 @@ abstract class CLI
      * @param array $context
      * @return string
      */
-    function interpolate($message, array $context = array())
+    function interpolate(Stringable|string $message, array $context = array()): string
     {
         // build a replacement array with braces around the context keys
         $replace = array();
