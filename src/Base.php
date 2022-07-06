@@ -97,8 +97,6 @@ abstract class Base
         $this->setupLogging();
         $this->checkArguments();
         $this->execute();
-
-        exit(0);
     }
 
     // region run handlers - for easier overriding
