@@ -95,7 +95,7 @@ abstract class Base
         $this->parseOptions();
         $this->handleDefaultOptions();
         $this->setupLogging();
-        $this->checkArgments();
+        $this->checkArguments();
         $this->execute();
 
         exit(0);
@@ -164,7 +164,7 @@ abstract class Base
     /**
      * Wrapper around the argument checking
      */
-    protected function checkArgments()
+    protected function checkArguments()
     {
         $this->options->checkArguments();
     }
