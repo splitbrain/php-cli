@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: 📝 ApiGen PHP Document Generator
-        uses: varunsridharan/action-apigen@2.0
+        uses: varunsridharan/action-apigen@2.1
         with:
           cached_apigen: 'no'
         env:
