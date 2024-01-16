@@ -229,10 +229,10 @@ abstract class Base
     public function setLogLevel($level)
     {
         if (!isset($this->loglevel[$level])) $this->fatal('Unknown log level');
-        $enable = true;
+        $enable = false;
         foreach (array_keys($this->loglevel) as $l) {
             $this->loglevel[$l]['enabled'] = $enable;
-            if ($l == $level) $enable = false;
+            if ($l == $level) break;
         }
     }
 
