@@ -237,6 +237,18 @@ abstract class Base
     }
 
     /**
+     * Check if a message with the given level should be logged
+     *
+     * @param string $level
+     * @return bool
+     */
+    public function isLogLevelEnabled($level)
+    {
+        if (!isset($this->loglevel[$level])) $this->fatal('Unknown log level');
+        return $this->loglevel[$level]['enabled'];
+    }
+
+    /**
      * Exits the program on a fatal error
      *
      * @param \Exception|string $error either an exception or an error message
@@ -283,7 +295,7 @@ abstract class Base
         if (!isset($this->loglevel[$level])) $level = 'error';
 
         $info = $this->loglevel[$level];
-        if (!$info['enabled']) return; // no logging for this level
+        if (!$this->isLogLevelEnabled($level)) return; // no logging for this level
 
         $message = $this->interpolate($message, $context);
 
