@@ -121,7 +121,7 @@ class Options
         $this->setup[$command]['args'][] = array(
             'name' => $arg,
             'help' => $help,
-            'required' => $required
+            'required' => $required,
         );
     }
 
@@ -158,7 +158,7 @@ class Options
      * @param string $command what command does this option apply to
      * @throws Exception
      */
-    public function registerOption($long, $help, $short = null, $needsarg = false, $command = '')
+    public function registerOption($long, $help, $short = null, $needsarg = false, $command = '', bool $multiple = false)
     {
         if (!isset($this->setup[$command])) {
             throw new Exception("Command $command not registered");
@@ -167,7 +167,8 @@ class Options
         $this->setup[$command]['opts'][$long] = array(
             'needsarg' => $needsarg,
             'help' => $help,
-            'short' => $short
+            'short' => $short,
+            'multiple' => $multiple
         );
 
         if ($short) {
@@ -264,7 +265,14 @@ class Options
                         throw new Exception("Option $opt requires an argument",
                             Exception::E_OPT_ARG_REQUIRED);
                     }
-                    $this->options[$opt] = $val;
+                    if ($this->setup[$this->command]['opts'][$opt]['multiple']) {
+                        if(!isset($this->options[$opt])) {
+                            $this->options[$opt] = array();
+                        }
+                        $this->options[$opt][] = $val;
+                    } else {
+                        $this->options[$opt] = $val;
+                    }
                 } else {
                     $this->options[$opt] = true;
                 }
@@ -290,7 +298,14 @@ class Options
                     throw new Exception("Option $arg requires an argument",
                         Exception::E_OPT_ARG_REQUIRED);
                 }
-                $this->options[$opt] = $val;
+                if ($this->setup[$this->command]['opts'][$opt]['multiple']) {
+                    if(!isset($this->options[$opt])) {
+                        $this->options[$opt] = array();
+                    }
+                    $this->options[$opt][] = $val;
+                } else {
+                    $this->options[$opt] = $val;
+                }
             } else {
                 $this->options[$opt] = true;
             }

@@ -77,6 +77,16 @@ class OptionsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(array('foo'), $options->args);
     }
 
+    function test_multiple() 
+    {
+        $options = new Options();
+        $options->registerOption('multiple', 'this option can be specified multiple times', 'm', true, multiple: true);
+
+        $options->args = array('-m', 'first', '--multiple', 'second', '-m', 'third', '--multiple', 'fourth');
+        $options->parseOptions();
+        $this->assertEquals(array("first", "second", "third", "fourth"), $options->getOpt('multiple'));
+    }
+
     function test_commandhelp()
     {
         $options = new Options();
