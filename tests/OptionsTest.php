@@ -80,7 +80,7 @@ class OptionsTest extends \PHPUnit\Framework\TestCase
     function test_multiple() 
     {
         $options = new Options();
-        $options->registerOption('multiple', 'this option can be specified multiple times', 'm', true, multiple: true);
+        $options->registerOption('multiple', 'this option can be specified multiple times', 'm', true, '', true);
 
         $options->args = array('-m', 'first', '--multiple', 'second', '-m', 'third', '--multiple', 'fourth');
         $options->parseOptions();

@@ -156,6 +156,7 @@ class Options
      * @param string|null $short one character option (specified with -)
      * @param bool|string $needsarg does this option require an argument? give it a name here
      * @param string $command what command does this option apply to
+     * @param bool $multiple this option can be specified multiple times
      * @throws Exception
      */
     public function registerOption($long, $help, $short = null, $needsarg = false, $command = '', bool $multiple = false)

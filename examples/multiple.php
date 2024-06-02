@@ -8,7 +8,7 @@ require __DIR__ . '/../vendor/autoload.php';
 use splitbrain\phpcli\CLI;
 use splitbrain\phpcli\Options;
 
-class Simple extends CLI
+class Multiple extends CLI
 {
 
     /**
@@ -20,7 +20,7 @@ class Simple extends CLI
     protected function setup(Options $options)
     {
         $options->setHelp('This is a simple example, not using any subcommands');
-        $options->registerOption('multiple', 'This option can be specified multiple times.', 'm', true, multiple: true);
+        $options->registerOption('multiple', 'This option can be specified multiple times.', 'm', true, '', true);
         $options->registerArgument('argument', 'Arguments can be required or optional. This one is optional', false);
     }
 
@@ -44,5 +44,5 @@ class Simple extends CLI
     }
 }
 
-$cli = new Simple();
+$cli = new Multiple();
 $cli->run();
