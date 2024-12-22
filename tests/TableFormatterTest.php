@@ -138,4 +138,51 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
         $result = $tf->format([5, '*'], [$col1, $col2]);
         $this->assertEquals($expect, $result);
     }
+
+    /**
+     * Test that colors are correctly applied when text is wrapping across lines.
+     *
+     * @dataProvider colorwrapProvider
+     */
+    public function test_colorwrap($text, $expect)
+    {
+        $tf = new TableFormatter();
+        $tf->setMaxWidth(15);
+
+        $this->assertEquals($expect, $tf->format(['*'], [$text]));
+    }
+
+    /**
+     * Data provider for test_colorwrap.
+     *
+     * @return array[]
+     */
+    public function colorwrapProvider()
+    {
+        $color = new Colors();
+        $cyan = $color->getColorCode(Colors::C_CYAN);
+        $reset = $color->getColorCode(Colors::C_RESET);
+        $wrap = function ($str) use ($color) {
+            return $color->wrap($str, Colors::C_CYAN);
+        };
+
+        return [
+            'color word line 1' => [
+                "This is ". $wrap("cyan") . " text wrapping",
+                "This is {$cyan}cyan{$reset}   \ntext wrapping  \n",
+                ],
+            'color word line 2' => [
+                "This is text ". $wrap("cyan") . " wrapping",
+                "This is text   \n{$cyan}cyan{$reset} wrapping  \n",
+                ],
+            'color across lines' => [
+                "This is ". $wrap("cyan text",) . " wrapping",
+                "This is {$cyan}cyan   \ntext{$reset} wrapping  \n",
+                ],
+            'color across lines until end' => [
+                "This is ". $wrap("cyan text wrapping"),
+                "This is {$cyan}cyan   \n{$cyan}text wrapping{$reset}  \n",
+                ],
+        ];
+    }
 }
