@@ -104,7 +104,7 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
 
         $tf = new TableFormatter();
         $tf->setBorder('|');
-        $result = $tf->format([20, '*'], [$text, 'test']);
+        $result = $tf->format(array(20, '*'), array($text, 'test'));
 
         $this->assertEquals($expect, trim($result));
     }
@@ -118,7 +118,7 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
 
         $tf = new TableFormatter();
         $tf->setBorder('|');
-        $result = $tf->format([20, '*'], [$text, 'test']);
+        $result = $tf->format(array(20, '*'), array($text, 'test'));
 
         $this->assertEquals($expect, trim($result));
     }
@@ -135,7 +135,7 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
         $tf->setMaxWidth(11);
         $tf->setBorder('|');
 
-        $result = $tf->format([5, '*'], [$col1, $col2]);
+        $result = $tf->format(array(5, '*'), array($col1, $col2));
         $this->assertEquals($expect, $result);
     }
 
@@ -149,7 +149,7 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
         $tf = new TableFormatter();
         $tf->setMaxWidth(15);
 
-        $this->assertEquals($expect, $tf->format(['*'], [$text]));
+        $this->assertEquals($expect, $tf->format(array('*'), array($text)));
     }
 
     /**
@@ -166,23 +166,23 @@ class TableFormatterTest extends \PHPUnit\Framework\TestCase
             return $color->wrap($str, Colors::C_CYAN);
         };
 
-        return [
-            'color word line 1' => [
+        return array(
+            'color word line 1' => array(
                 "This is ". $wrap("cyan") . " text wrapping",
                 "This is {$cyan}cyan{$reset}   \ntext wrapping  \n",
-                ],
-            'color word line 2' => [
+            ),
+            'color word line 2' => array(
                 "This is text ". $wrap("cyan") . " wrapping",
                 "This is text   \n{$cyan}cyan{$reset} wrapping  \n",
-                ],
-            'color across lines' => [
-                "This is ". $wrap("cyan text",) . " wrapping",
+            ),
+            'color across lines' => array(
+                "This is ". $wrap("cyan text") . " wrapping",
                 "This is {$cyan}cyan   \ntext{$reset} wrapping  \n",
-                ],
-            'color across lines until end' => [
+            ),
+            'color across lines until end' => array(
                 "This is ". $wrap("cyan text wrapping"),
                 "This is {$cyan}cyan   \n{$cyan}text wrapping{$reset}  \n",
-                ],
-        ];
+            ),
+        );
     }
 }
