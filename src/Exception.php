@@ -25,7 +25,7 @@ class Exception extends \RuntimeException
      * @param int $code The Exception code
      * @param \Exception $previous The previous exception used for the exception chaining.
      */
-    public function __construct($message = "", $code = 0, \Exception $previous = null)
+    public function __construct($message = "", $code = 0, ?\Exception $previous = null)
     {
         if (!$code) {
             $code = self::E_ANY;
