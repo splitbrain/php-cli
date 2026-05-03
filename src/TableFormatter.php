@@ -26,7 +26,7 @@ class TableFormatter
      *
      * @param Colors|null $colors
      */
-    public function __construct(Colors $colors = null)
+    public function __construct(?Colors $colors = null)
     {
         // try to get terminal width
         $width = $this->getTerminalWidth();
