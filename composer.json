@@ -24,20 +24,11 @@
     "psr/log": "Allows you to make the CLI available as PSR-3 logger"
   },
   "require-dev": {
-    "phpunit/phpunit": "^8",
-    "phpdocumentor/shim": "^3"
+    "phpunit/phpunit": "^8"
   },
   "autoload": {
     "psr-4": {
       "splitbrain\\phpcli\\": "src"
-    }
-  },
-  "scripts": {
-    "docs": "phpdoc -d src -t docs --no-interaction"
-  },
-  "config": {
-    "allow-plugins": {
-      "phpdocumentor/shim": true
     }
   }
 }

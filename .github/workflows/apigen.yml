@@ -20,11 +20,13 @@ jobs:
         with:
           php-version: '8.4'
 
-      - name: Install dependencies
-        run: composer install --no-interaction --no-progress
+      - name: Download phpDocumentor
+        run: |
+          curl -fsSL -o phpDocumentor.phar https://phpdoc.org/phpDocumentor.phar
+          chmod +x phpDocumentor.phar
 
       - name: Generate API docs
-        run: composer docs
+        run: php phpDocumentor.phar -d src -t docs --no-interaction
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
