@@ -10,11 +10,28 @@ on:
 jobs:
   Document_Generator:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
-      - uses: actions/checkout@v2
-      - name: 📝 ApiGen PHP Document Generator
-        uses: varunsridharan/action-apigen@2.1
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          cached_apigen: 'no'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          php-version: '8.4'
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-progress
+
+      - name: Generate API docs
+        run: composer docs
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Docs updated by GitHub Actions'
